@@ -10,12 +10,19 @@ export default defineConfig({
     vue2(),
     legacy({
       targets: ['ie >= 11'],
-      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
-    })
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+    }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/assets/base.scss";`,
+      },
+    },
+  },
 })
